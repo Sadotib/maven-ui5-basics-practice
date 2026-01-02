@@ -51,6 +51,10 @@
         "settings": {
           "bundleName": "ui5basicspractice.project1.i18n.i18n"
         }
+      },
+      "manifestCarModel": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "model/manifestCarModel.json"
       }
     },
     "resources": {

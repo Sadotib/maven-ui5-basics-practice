@@ -1,11 +1,125 @@
-<mvc:View controllerName="ui5basicspractice.project1.controller.Home"
+<mvc:View
+    controllerName="ui5basicspractice.project1.controller.Home"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
-    xmlns:core="sap.ui.core">
-    <Page id="page" title="{i18n>title}">
-        <content>
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+>
+    <Page
+        id="page"
+        title="{i18n>title}"
+    >
+        <l:VerticalLayout>
+            <Button
+                text="{i18n>messageBoxText}"
+                class="sapUiSmallMarginBottom"
+                press=".onInfoMessageBoxPress"
+            />
 
-            
-        </content>
+            <f:SimpleForm
+                id="SimpleCarForm"
+                editable="true"
+                layout="ResponsiveGridLayout"
+                title="Cars"
+            >
+                <f:content>
+                    <Label
+                        text="Car Name"
+                        labelFor="carNameInput"
+                    />
+                    <Input
+                        id="carNameInput"
+                        placeholder="Enter car"
+                        showSuggestion="true"
+                        value="{manifestCarModel>/car}"
+                    >
+                        <suggestionItems>
+                            <core:Item text="{carModel>/car}" />
+                        </suggestionItems>
+                    </Input>
+
+                    <Label
+                        text="Manufacturer Name"
+                        labelFor="carManufacturerInput"
+                    />
+                    <Input
+                        id="carManufacturerInput"
+                        placeholder="Enter manufacturer"
+                        showSuggestion="true"
+                        value="{manifestCarModel>/manufacturer}"
+                    >
+                        <suggestionItems>
+                            <core:Item
+                                text="{carModel>/manufacturer}"
+                            />
+                        </suggestionItems>
+                    </Input>
+
+                    <Label
+                        text="DOM"
+                        labelFor="carDOMInput"
+                    />
+                    <Input
+                        id="carDOMInput"
+                        placeholder="Enter DOM"
+                        showSuggestion="true"
+                        value="{manifestCarModel>/DOM}"
+                    >
+                        <suggestionItems>
+                            <core:Item text="{carModel>/DOM}" />
+                        </suggestionItems>
+                    </Input>
+
+                    <Button
+                        type="Success"
+                        text="Submit"
+                        press="onSubmitBtnPress"
+                    />
+                </f:content>
+            </f:SimpleForm>
+
+            <Table
+                id="carTable"
+                inset="false"
+                items="{
+			path: 'manifestCarModel>/Cars',
+			sorter: {
+				path: 'Name'
+			}
+		}"
+            >
+                
+                <infoToolbar>
+                    <OverflowToolbar>
+                        <Label text="Cars available" />
+                    </OverflowToolbar>
+                </infoToolbar>
+                <columns>
+                    <Column width="12em">
+                        <Text text="Car" />
+                    </Column>
+                    <Column>
+                        <Text text="Manufacturer" />
+                    </Column>
+                    <Column>
+                        <Text text="DOM" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem vAlign="Middle">
+                        <cells>
+                            
+                            <Text text="{manifestCarModel>car}" />
+                            <Text
+                                text="{manifestCarModel>manufacturer}"
+                            />
+                            <Text text="{manifestCarModel>DOM}" />
+                            
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </l:VerticalLayout>
     </Page>
 </mvc:View>

@@ -1,0 +1,14 @@
+{
+    "Cars": [
+        {
+            "car": "City",
+            "manufacturer": "Honda",
+            "DOM": "2018"
+        },
+        {
+            "car": "800",
+            "manufacturer": "Maruti",
+            "DOM": "2010"
+        }
+    ]
+}
