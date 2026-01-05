@@ -1,14 +1,22 @@
 {
     "Cars": [
         {
+            "car": "Corolla Altis",
+            "manufacturer": "Toyota",
+            "DOM": "2018",
+            "ownership": "1"
+        },
+        {
             "car": "City",
             "manufacturer": "Honda",
-            "DOM": "2018"
+            "DOM": "2018",
+            "ownership": "BN"
         },
         {
             "car": "800",
             "manufacturer": "Maruti",
-            "DOM": "2010"
+            "DOM": "2010",
+            "ownership": "BN"
         }
     ]
 }

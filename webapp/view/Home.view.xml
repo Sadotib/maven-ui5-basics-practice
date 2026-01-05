@@ -5,12 +5,13 @@
     xmlns:core="sap.ui.core"
     xmlns:l="sap.ui.layout"
     xmlns:f="sap.ui.layout.form"
+    core:require="{formatter: 'ui5basicspractice/project1/model/formatter'}"
 >
     <Page
         id="page"
         title="{i18n>title}"
     >
-        <l:VerticalLayout>
+        <l:VerticalLayout width="100%">
             <Button
                 text="{i18n>messageBoxText}"
                 class="sapUiSmallMarginBottom"
@@ -22,6 +23,7 @@
                 editable="true"
                 layout="ResponsiveGridLayout"
                 title="Cars"
+                width="100%"
             >
                 <f:content>
                     <Label
@@ -31,12 +33,13 @@
                     <Input
                         id="carNameInput"
                         placeholder="Enter car"
-                        showSuggestion="true"
+                        
+                        showValueHelp="true"
+                        valueHelpRequest=".onValueHelpRequest"
                         value="{manifestCarModel>/car}"
                     >
-                        <suggestionItems>
-                            <core:Item text="{carModel>/car}" />
-                        </suggestionItems>
+                    
+                        
                     </Input>
 
                     <Label
@@ -46,14 +49,12 @@
                     <Input
                         id="carManufacturerInput"
                         placeholder="Enter manufacturer"
-                        showSuggestion="true"
+                       
+                        showValueHelp="true"
+                        valueHelpRequest=".onValueHelpRequest"
                         value="{manifestCarModel>/manufacturer}"
                     >
-                        <suggestionItems>
-                            <core:Item
-                                text="{carModel>/manufacturer}"
-                            />
-                        </suggestionItems>
+                   
                     </Input>
 
                     <Label
@@ -63,12 +64,25 @@
                     <Input
                         id="carDOMInput"
                         placeholder="Enter DOM"
-                        showSuggestion="true"
+                        
                         value="{manifestCarModel>/DOM}"
                     >
-                        <suggestionItems>
-                            <core:Item text="{carModel>/DOM}" />
-                        </suggestionItems>
+                        
+                    </Input>
+
+                    <Label
+                        text="Ownership"
+                        labelFor="carOwnershipInput"
+                    />
+                    <Input
+                        id="carOwnershipInput"
+                        placeholder="Enter Ownership"
+                       
+                        showValueHelp="true"
+                        valueHelpRequest=".onValueHelpRequest"
+                        value="{manifestCarModel>/ownership}"
+                    >
+                        
                     </Input>
 
                     <Button
@@ -79,47 +93,86 @@
                 </f:content>
             </f:SimpleForm>
 
-            <Table
-                id="carTable"
-                inset="false"
-                items="{
-			path: 'manifestCarModel>/Cars',
-			sorter: {
-				path: 'Name'
-			}
-		}"
-            >
-                
-                <infoToolbar>
-                    <OverflowToolbar>
-                        <Label text="Cars available" />
-                    </OverflowToolbar>
-                </infoToolbar>
-                <columns>
-                    <Column width="12em">
-                        <Text text="Car" />
-                    </Column>
-                    <Column>
-                        <Text text="Manufacturer" />
-                    </Column>
-                    <Column>
-                        <Text text="DOM" />
-                    </Column>
-                </columns>
-                <items>
-                    <ColumnListItem vAlign="Middle">
-                        <cells>
-                            
-                            <Text text="{manifestCarModel>car}" />
-                            <Text
-                                text="{manifestCarModel>manufacturer}"
-                            />
-                            <Text text="{manifestCarModel>DOM}" />
-                            
-                        </cells>
-                    </ColumnListItem>
-                </items>
-            </Table>
+            <IconTabBar
+                    id="idIconTabBarNoIcons"
+                    expanded="{device>/isNoPhone}"
+                    class="sapUiResponsiveContentPadding">
+                    <items>
+                        <IconTabFilter text="Table" key="table">
+                            <Table
+                                id="carTable"
+                                inset="false"
+                                items="{
+                                path: 'manifestCarModel>/Cars',
+                                sorter: {
+                                    path: 'DOM'
+                                }
+                            }"
+                            >
+                                
+                                <infoToolbar>
+                                    <OverflowToolbar>
+                                        <Label text="Cars available" />
+                                    </OverflowToolbar>
+                                    
+                                </infoToolbar>
+                                
+                                <columns>
+                                    <Column width="12em">
+                                        <Text text="Car" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Manufacturer" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="DOM" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Ownership" />
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem vAlign="Middle">
+                                        <cells>
+                                            
+                                            <Text text="{manifestCarModel>car}" />
+                                            <Text
+                                                text="{manifestCarModel>manufacturer}"
+                                            />
+                                            <Text text="{manifestCarModel>DOM}" />
+                                            <Text
+                                                text="{
+                                                    path: 'manifestCarModel>ownership',
+                                                    formatter: 'formatter.carOwnershipText'
+                                                }"
+                                            />
+                                            
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </IconTabFilter>
+                        <IconTabFilter text="List" key="list">
+                            <List headerText="Custom Content" mode="Delete" items="{path: 'manifestCarModel>/Cars'}" >
+                                <CustomListItem>
+                                    <HBox>
+                                        <core:Icon size="2rem" src="sap-icon://attachment-photo" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" />
+                                        <VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" >
+                                            <Label text="{manifestCarModel>car}" />
+                                            <Label text="{manifestCarModel>manufacturer}"/>
+                                            <Label text="{manifestCarModel>DOM}"/>
+                                            <Label text="{
+                                                    path: 'manifestCarModel>ownership',
+                                                    formatter: 'formatter.carOwnershipText'
+                                                }"/>
+                                        </VBox>
+                                    </HBox>
+                                </CustomListItem>
+                            </List>
+                        </IconTabFilter>
+                    </items>
+            </IconTabBar>
+            
         </l:VerticalLayout>
     </Page>
 </mvc:View>
