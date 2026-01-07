@@ -4,7 +4,37 @@
             "car": "Corolla Altis",
             "manufacturer": "Toyota",
             "DOM": "2018",
-            "ownership": "1"
+            "ownership": "1",
+            "Engine": [
+                {
+                    "cylinder": "2",
+                    "power": "100bhp"
+                }
+                
+            ],
+            "Dimension": [
+                {
+                    "size": "S"
+                }
+            ]
+        },
+        {
+            "car": "Jimny",
+            "manufacturer": "Suzuki",
+            "DOM": "2024",
+            "ownership": "BN",
+            "Engine": [
+                {
+                    "cylinder": "2",
+                    "power": "90bhp"
+                }
+                
+            ],
+            "Dimension": [
+                {
+                    "size": "C"
+                }
+            ]
         }
         
     ]

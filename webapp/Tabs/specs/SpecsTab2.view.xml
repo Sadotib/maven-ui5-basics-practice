@@ -1,0 +1,57 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    core:require="{formatter: 'ui5basicspractice/project1/model/formatter'}"
+>
+    <Panel>
+        <FlexBox
+            height="100px"
+            alignItems="Center"
+            justifyContent="Center"
+        >
+            <Table
+                id="carSpecsTable2"
+                inset="false"
+                items="{
+                                path: 'manifestCarModel>/Cars',
+                                sorter: {
+                                    path: 'DOM'
+                                }
+                            }"
+            >
+                <columns>
+                    <Column width="12em">
+                        <Text text="Car" />
+                    </Column>
+
+                    <Column>
+                        <Text text="Size" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem vAlign="Middle">
+                        <cells>
+                            <Text text="{manifestCarModel>car}" />
+                            <Text
+                                text="{
+                                                path: 'manifestCarModel>Dimension/0/size',
+                                                formatter: 'formatter.carSizeText'
+                                            }"
+                            />
+
+                            <!-- <Text
+                                                text="{
+                                                    path: 'manifestCarModel>ownership',
+                                                    formatter: 'formatter.carOwnershipText'
+                                                }"
+                                            /> -->
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </FlexBox>
+    </Panel>
+</mvc:View>

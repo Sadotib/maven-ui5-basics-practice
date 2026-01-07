@@ -2,12 +2,15 @@
 		   xmlns="sap.uxap"
 		   xmlns:layout="sap.ui.layout"
 		   xmlns:m="sap.m"
-		   
+           xmlns:core="sap.ui.core"
+           xmlns:info="ui5basicspractice.project1.Tabs.info"
+           xmlns:specs="ui5basicspractice.project1.Tabs.specs"
+           xmlns:split="ui5basicspractice.project1.Tabs.splitAppTest"
 		   controllerName="ui5basicspractice.project1.controller.Home"
+           core:require="{formatter: 'ui5basicspractice/project1/model/formatter'}"
 		   height="100%">
 	<ObjectPageLayout id="ObjectPageLayout"
 		enableLazyLoading="true"
-		beforeNavigate="onBeforeNavigate"
 		useIconTabBar="true"
 		showTitleInHeaderContent="true"
 		upperCaseAnchorBar="false">
@@ -19,52 +22,94 @@
 
 				<snappedHeading>
 					<m:FlexBox fitContainer="true" alignItems="Center">
-						<m:Avatar src="./test-resources/sap/uxap/images/imageID_275314.png" class="sapUiTinyMarginEnd"/>
 						<m:Title text="Car Profile" wrapping="true" />
 					</m:FlexBox>
 				</snappedHeading>
 
 				<expandedContent>
-					<m:Text text="{manifestCarModel>/car}"/>
+					<m:Text text="{manifestCarModel>/Cars/0/car}"/>
 				</expandedContent>
 
 				<snappedContent>
-					<m:Text text="{manifestCarModel>/car}"/>
+					<m:Text text="{manifestCarModel>/Cars/0/car}"/>
 				</snappedContent>
 
 				<snappedTitleOnMobile>
-					<m:Title text="{manifestCarModel>/Cars/car}"/>
+					<m:Title text="{manifestCarModel>/Cars/0/car}"/>
 				</snappedTitleOnMobile>
 
 				<actions>
-					<m:Button text="Edit" type="Emphasized" press="onEdit"/>
+					<!-- <m:Button text="Edit" type="Emphasized" press="onEdit"/>
 					<m:Button type="Transparent" text="Delete"/>
-					<m:Button type="Transparent" text="Copy"/>
-					<m:OverflowToolbarButton icon="sap-icon://action" type="Transparent" text="Share" tooltip="action"/>
+					<m:Button type="Transparent" text="Copy"/> -->
+					<m:OverflowToolbarButton type="Transparent" text="Info" tooltip="Info" press="onShare"/>
 				</actions>
 			</ObjectPageDynamicHeaderTitle>
 		</headerTitle>
 
 		<headerContent>
 			<m:FlexBox wrap="Wrap" fitContainer="true" >
-				<m:Avatar class="sapUiSmallMarginEnd" src="./test-resources/sap/uxap/images/imageID_275314.png" displaySize="L" />
+				
 
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
-					<m:Link text="{manifestCarModel>/Cars/manufacturer}"/>
-					<m:Link text="{manifestCarModel>/Cars/DOM}"/>
+					<m:Text text="{manifestCarModel>/Cars/0/manufacturer}"/>
+					<m:Text text="{manifestCarModel>/Cars/0/DOM}"/>
 				</layout:VerticalLayout>
 
-				<layout:HorizontalLayout class="sapUiSmallMarginBeginEnd">
-					<m:Image src="./test-resources/sap/uxap/images/linkedin.png"/>
-					<m:Image src="./test-resources/sap/uxap/images/Twitter.png" class="sapUiSmallMarginBegin"/>
-			    </layout:HorizontalLayout>
-
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
-					<m:Label text="{manifestCarModel>/Cars/ownership}"/>
+					<m:Text text="{
+                        path: 'manifestCarModel>/Cars/0/ownership',
+                        formatter: 'formatter.carOwnershipText'
+                    }"/>
 				</layout:VerticalLayout>
 			</m:FlexBox>
 		</headerContent>
+        <sections>
+			<ObjectPageSection titleUppercase="false" id="info" title="Information">
+			<subSections>
+				<ObjectPageSubSection id="infoSS1" titleUppercase="false">
+					<blocks>
+						<info:InfoTab id="infoTab"/>
+					</blocks>
+				</ObjectPageSubSection>
+			</subSections>
+			</ObjectPageSection>
+
+			<ObjectPageSection titleUppercase="false" id="specs" title="Specifications">
+				<subSections>
+					<ObjectPageSubSection id="specsSS1" title="Engine Specifications" titleUppercase="false">
+						<blocks>
+							<specs:SpecsTab1 id="test1" columnLayout="1"/>
+							
+						</blocks>
+					</ObjectPageSubSection>
+
+					<ObjectPageSubSection id="specsSS2" title="Dimensions" titleUppercase="false">
+						<blocks>
+							<specs:SpecsTab2 id="part2" columnLayout="1"/>
+						</blocks>
+						
+						<moreBlocks>
+							<specs:SpecsTab1 id="part1" columnLayout="1"/>
+						</moreBlocks>
+					</ObjectPageSubSection>
+
+                    
+				</subSections>
+			</ObjectPageSection>
+
+            <ObjectPageSection titleUppercase="false" id="splitAppTest" title="SplitAppTest">
+			<subSections>
+				<ObjectPageSubSection id="splitSS1" title="SplitAppTest" titleUppercase="true">
+					<blocks>
+						<split:SplitAppTest id="splitTest1" columnLayout="1"/>
+					</blocks>
+				</ObjectPageSubSection>
+			</subSections>
+			</ObjectPageSection>
+        </sections>
 
 		
 	</ObjectPageLayout>
+    
 </mvc:View>

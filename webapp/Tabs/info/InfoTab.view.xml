@@ -1,0 +1,59 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    core:require="{formatter: 'ui5basicspractice/project1/model/formatter'}">
+	<Table
+                                id="carTable"
+                                inset="false"
+                                items="{
+                                path: 'manifestCarModel>/Cars',
+                                sorter: {
+                                    path: 'DOM'
+                                }
+                            }"
+                            >
+                                
+                                <infoToolbar>
+                                    <OverflowToolbar>
+                                        <Label text="Cars available" />
+                                    </OverflowToolbar>
+                                    
+                                </infoToolbar>
+                                
+                                <columns>
+                                    <Column width="12em">
+                                        <Text text="Car" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Manufacturer" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="DOM" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Ownership" />
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem vAlign="Middle">
+                                        <cells>
+                                            
+                                            <Text text="{manifestCarModel>car}" />
+                                            <Text
+                                                text="{manifestCarModel>manufacturer}"
+                                            />
+                                            <Text text="{manifestCarModel>DOM}" />
+                                            <Text
+                                                text="{
+                                                    path: 'manifestCarModel>ownership',
+                                                    formatter: 'formatter.carOwnershipText'
+                                                }"
+                                            />
+                                            
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+</mvc:View>

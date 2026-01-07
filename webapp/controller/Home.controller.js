@@ -16,63 +16,11 @@ sap.ui.define([
 
         onAfterRendering: function () {
             console.log("rendered");
+        },		
+
+        onShare: function () {
+            MessageBox.information("This is a car database");
         },
-
-
-        onEdit: function () {
-			this.bEditMode = !this.bEditMode;
-			var sEditMode =  this.bEditMode ? "enabled" : "disabled";
-			MessageToast.show("Edit mode " + sEditMode);
-		},
-		onBeforeNavigate: function (oEvent) {
-			if (!this.bEditMode) {
-				return;
-			}
-
-			var oSection = oEvent.getParameter("section");
-
-			oEvent.preventDefault();
-
-			if (!this.oDialog) {
-				this.oDialog = new Dialog({
-					title: "Unsaved changes",
-					content: new Text({
-						text: "You are in 'Edit' mode. Are you sure you want to navigate to other section?"
-					}),
-					beginButton: new Button({
-						text: "OK",
-						press: function () {
-							this.oDialog.close();
-							this.oPreviousSelectedSection = this.oSelectedSection;
-							this.oOPL.setSelectedSection(this.oSelectedSection);
-						}.bind(this)
-					}),
-					endButton: new Button({
-						text: "Cancel",
-						press: function () {
-							this.oDialog.close();
-							this.oSelectedSection = this.oPreviousSelectedSection;
-						}.bind(this)
-					})
-				});
-
-				this.getView().addDependent(this.oDialog);
-				this.oDialog.attachAfterClose(function () {
-					this.oSelectedSection.getDomRef().focus();
-				}.bind(this));
-			}
-
-			if (this.oSelectedSection !== oSection) {
-				this.oDialog.open();
-				this.oPreviousSelectedSection = this.oSelectedSection;
-			}
-
-			this.oSelectedSection = oSection;
-		},
-
-        // onInfoMessageBoxPress: function () {
-        //     MessageBox.information("This is a car database");
-        // },
 
         // //value help part
         // onValueHelpRequest: function (oEvent) {
