@@ -3,19 +3,19 @@ sap.ui.define(["sap/ui/core/library", 'sap/uxap/BlockBase'], function (coreLibra
 
 	var ViewType = coreLibrary.mvc.ViewType;
 
-	var SpecsTab2 = BlockBase.extend("ui5basicspractice.project1.Tabs.specs.SpecsTab2", {
+	var compareTab = BlockBase.extend("ui5basicspractice.project1.Tabs.compare.Compare", {
 		metadata: {
 			views: {
 				Collapsed: {
-					viewName: "ui5basicspractice.project1.Tabs.specs.SpecsTab2",
+					viewName: "ui5basicspractice.project1.Tabs.compare.Compare",
 					type: ViewType.XML
 				},
 				Expanded: {
-					viewName: "ui5basicspractice.project1.Tabs.specs.SpecsTab2",
+					viewName: "ui5basicspractice.project1.Tabs.compare.Compare",
 					type: ViewType.XML
 				}
 			}
 		}
 	});
-	return SpecsTab2;
+	return compareTab;
 });

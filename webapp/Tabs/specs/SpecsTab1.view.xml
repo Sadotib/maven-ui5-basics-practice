@@ -6,50 +6,29 @@
     xmlns:f="sap.ui.layout.form"
     core:require="{formatter: 'ui5basicspractice/project1/model/formatter'}"
 >
-    <Panel>
-        <FlexBox
-            height="100px"
-            alignItems="Center"
-            justifyContent="Center"
-        >
-            <Table
-                id="carSpecsTable1"
-                inset="false"
-                items="{
-                                path: 'manifestCarModel>/Cars',
-                                sorter: {
-                                    path: 'DOM'
-                                }
-                            }"
-            >
-                <columns>
-                    <Column width="12em">
-                        <Text text="Car" />
-                    </Column>
+<VBox>
+                                        <Label text="Engine Specificationssss" class="sapUiSmallMarginBottom"/>
+                                        <Table 
+                                            items="{manifestCarModel>Engine}"
+                                            class="sapUiResponsiveMargin"
+                                            width="auto">
+                                            <columns>
+                                                <Column width="12em">
+                                                    <Text text="Cylinders"/>
+                                                </Column>
+                                                <Column>
+                                                    <Text text="Power"/>
+                                                </Column>
+                                            </columns>
+                                            <items>
+                                                <ColumnListItem vAlign="Middle">
+                                                    <cells>
+                                                        <Text text="{manifestCarModel>cylinder}" />
+                                                        <Text text="{manifestCarModel>power}"/>
+                                                    </cells>
+                                                </ColumnListItem>
+                                            </items>
+                                        </Table>
+                                    </VBox>
 
-                    <Column>
-                        <Text text="Cylinder" />
-                    </Column>
-                    <Column>
-                        <Text text="Power" />
-                    </Column>
-                </columns>
-                <items>
-                    <ColumnListItem vAlign="Middle">
-                        <cells>
-                            <Text text="{manifestCarModel>car}" />
-                            <Text text="{manifestCarModel>Engine/0/cylinder}" />
-                            <Text text="{manifestCarModel>Engine/0/power}" />
-                            <!-- <Text
-                                                text="{
-                                                    path: 'manifestCarModel>ownership',
-                                                    formatter: 'formatter.carOwnershipText'
-                                                }"
-                                            /> -->
-                        </cells>
-                    </ColumnListItem>
-                </items>
-            </Table>
-        </FlexBox>
-    </Panel>
 </mvc:View>
