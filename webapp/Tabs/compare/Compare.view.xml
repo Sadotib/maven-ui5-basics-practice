@@ -1,0 +1,33 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    core:require="{formatter: 'ui5basicspractice/project1/model/formatter'}"
+	controllerName="ui5basicspractice.project1.controller.Home2"
+>
+
+
+	<Label text="ID" labelFor="IdInput"></Label>
+	<Input id="IdInput" placeholder="ID" value="{testODataModel>/ID}"></Input>
+	<Label text="Name" labelFor="nameInput"></Label>
+	<Input id="nameInput" placeholder="Name" value="{testODataModel>/Name}"></Input>
+	<Label text="Description" labelFor="descInput"></Label>
+	<Input id="descInput" placeholder="Description" value="{testODataModel>/Description}"></Input>
+	<Button text="Create" press="onCreate"></Button>
+	<Button text="Update" press="onUpdate"></Button>
+	<Button text="Delete" press="onDelete"></Button>
+
+	<List
+		headerText="Products"
+	
+		items="{/Products}" 
+		mode="SingleSelectMaster"
+		selectionChange="onSelect">
+		<StandardListItem
+			title="{Name}"
+			description="{Description}"
+			/>
+	</List>
+</mvc:View>

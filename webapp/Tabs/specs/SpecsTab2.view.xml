@@ -1,0 +1,35 @@
+
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    core:require="{formatter: 'ui5basicspractice/project1/model/formatter'}"
+>
+<VBox>
+                                        <Label text="Dimension" class="sapUiSmallMarginBottom"/>
+                                        <Table 
+                                            items="{testManifestCarModel>Dimension}"
+                                            class="sapUiResponsiveMargin"
+                                            width="auto">
+                                            <columns>
+                                                <Column>
+                                                    <Text text="Size"/>
+                                                </Column>
+                                            </columns>
+                                            <items>
+                                                <ColumnListItem>
+                                                    <cells>
+                                                        <Text 
+                                                            text="{
+															path: 'testManifestCarModel>size',
+															formatter: 'formatter.carSizeText'}"
+                                                            />
+                                                    </cells>
+                                                </ColumnListItem>
+                                            </items>
+                                        </Table>
+                                    </VBox>
+
+</mvc:View>

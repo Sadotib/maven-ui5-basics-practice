@@ -1,0 +1,154 @@
+<mvc:View
+    controllerName="ui5basicspractice.project1.controller.Home2"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+    xmlns:uxap="sap.uxap"
+    xmlns:layout="sap.ui.layout"
+	xmlns:form = "sap.ui.layout.form"
+    xmlns:info="ui5basicspractice.project1.Tabs.info"
+	xmlns:specs="ui5basicspractice.project1.Tabs.specs"
+	xmlns:compare="ui5basicspractice.project1.Tabs.compare"
+    height="100%"
+	core:require="{formatter: 'ui5basicspractice/project1/model/formatter'}">
+
+    
+    <Page
+        title="Home 2"
+        id="home2"
+        >
+
+        <Button text="Go to Home" press="onNavHome"></Button>
+        <SplitApp
+            id="SplitAppTest"
+            initialDetail="carDetailPage"
+            initialMaster="master1">
+            
+            <masterPages>
+                <Page
+                    id="master1"
+                    title="Cars List"
+                    backgroundDesign="List">
+                    <List
+                        id="carsList1"
+                        mode="SingleSelectMaster"
+                        
+                        selectionChange="onCarSelect">
+                        <StandardListItem
+                            title="{testManifestCarModel>car}"
+                            description="{testManifestCarModel>manufacturer}"
+                            info="{testManifestCarModel>DOM}"
+                            type="Active"
+                        />
+                    </List>
+                </Page>
+            </masterPages>
+            
+        
+            <detailPages>
+                <uxap:ObjectPageLayout
+                    id="carDetailPage"
+                    showTitleInHeaderContent="true"
+                    upperCaseAnchorBar="false"
+                    useIconTabBar="true">
+                    
+
+                    <uxap:headerTitle>
+                        <uxap:ObjectPageDynamicHeaderTitle>
+                            <uxap:expandedHeading>
+                                <Title text="{testManifestCarModel>car}" wrapping="true"/>
+                            </uxap:expandedHeading>
+                            
+                            <uxap:snappedHeading>
+                                <FlexBox fitContainer="true" alignItems="Center">
+                                
+                                    <Title text="{testManifestCarModel>car}" wrapping="true"/>
+                                </FlexBox>
+                            </uxap:snappedHeading>
+                            
+                            <uxap:expandedContent>
+                                <Text text="{testManifestCarModel>manufacturer}"/>
+                            </uxap:expandedContent>
+                            
+                            <uxap:snappedContent>
+                                <Text text="{testManifestCarModel>manufacturer}"/>
+                            </uxap:snappedContent>
+                            
+                            
+                        </uxap:ObjectPageDynamicHeaderTitle>
+                    </uxap:headerTitle>
+                    
+                    <uxap:headerContent>
+                        <FlexBox wrap="Wrap" fitContainer="true">
+                            
+                            <layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+                                <Label text="Manufacturer"/>
+                                <Text text="{testManifestCarModel>manufacturer}"/>
+                            </layout:VerticalLayout>
+                            
+                            <layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+                                <Label text="Year"/>
+                                <Text text="{testManifestCarModel>DOM}"/>
+                            </layout:VerticalLayout>
+                            
+                            <layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+                                <Label text="Ownership"/>
+                                <Text text="{
+                                    path: 'testManifestCarModel>ownership',
+                                    formatter: 'formatter.carOwnershipText'}"/>
+                            </layout:VerticalLayout>
+                        </FlexBox>
+                    </uxap:headerContent>
+                    
+                    <uxap:sections>
+                        
+                        <uxap:ObjectPageSection 
+                            title="Information" 
+                            titleUppercase="true">
+                            <uxap:subSections>
+                                <uxap:ObjectPageSubSection>
+                                    <uxap:blocks>
+                                        <info:InfoTab id="infoTab"/>
+                                        
+                                    </uxap:blocks>
+                                </uxap:ObjectPageSubSection>
+                            </uxap:subSections>
+                        </uxap:ObjectPageSection>
+                        
+                        <uxap:ObjectPageSection 
+                            title="Specifications" 
+                            titleUppercase="false">
+                            <uxap:subSections>
+                                <uxap:ObjectPageSubSection>
+                                    <uxap:blocks>
+                                        <specs:SpecsTab1 id="specsTab1" columnLayout="1"/>
+                                    </uxap:blocks>
+                                    <uxap:moreBlocks>
+                                        <specs:SpecsTab2 id="specsTab2" columnLayout="2"/>
+                                    </uxap:moreBlocks>
+                                </uxap:ObjectPageSubSection>
+                            </uxap:subSections>
+                        </uxap:ObjectPageSection>
+                        
+                        
+                        <uxap:ObjectPageSection 
+                            title="Compare" 
+                            titleUppercase="false">
+                            <uxap:subSections>
+                                <uxap:ObjectPageSubSection>
+                                    <uxap:blocks>
+                                        <compare:Compare id="compareTab"/>
+                                    </uxap:blocks>
+                                </uxap:ObjectPageSubSection>
+                            </uxap:subSections>
+                        </uxap:ObjectPageSection>
+                        
+                    </uxap:sections>
+                    
+                </uxap:ObjectPageLayout>
+                
+            </detailPages>
+        </SplitApp>
+
+    </Page>
+</mvc:View>

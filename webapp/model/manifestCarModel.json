@@ -1,6 +1,7 @@
 {
     "Cars": [
         {
+<<<<<<< Updated upstream
             "car": "City",
             "manufacturer": "Honda",
             "DOM": "2018"
@@ -9,6 +10,79 @@
             "car": "800",
             "manufacturer": "Maruti",
             "DOM": "2010"
+=======
+            "car": "Corolla Altis",
+            "manufacturer": "Toyota",
+            "DOM": "2018",
+            "ownership": "1",
+            "Engine": [
+                {
+                    "cylinder": "2",
+                    "power": "100bhp"
+                }
+                
+            ],
+            "Dimension": [
+                {
+                    "size": "S"
+                }
+            ]
+        },
+        {
+            "car": "Jimny",
+            "manufacturer": "Suzuki",
+            "DOM": "2024",
+            "ownership": "BN",
+            "Engine": [
+                {
+                    "cylinder": "2",
+                    "power": "90bhp"
+                }
+                
+            ],
+            "Dimension": [
+                {
+                    "size": "C"
+                }
+            ]
+        },
+        {
+            "car": "800",
+            "manufacturer": "Maruti Suzuki",
+            "DOM": "2009",
+            "ownership": "2",
+            "Engine": [
+                {
+                    "cylinder": "2",
+                    "power": "50bhp"
+                }
+                
+            ],
+            "Dimension": [
+                {
+                    "size": "C"
+                }
+            ]
+        },
+        {
+            "car": "Verna",
+            "manufacturer": "Hyundai",
+            "DOM": "2018",
+            "ownership": "1",
+            "Engine": [
+                {
+                    "cylinder": "4",
+                    "power": "120bhp"
+                }
+                
+            ],
+            "Dimension": [
+                {
+                    "size": "S"
+                }
+            ]
+>>>>>>> Stashed changes
         }
+        
     ]
 }
